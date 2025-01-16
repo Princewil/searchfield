@@ -334,6 +334,8 @@ class SearchField<T> extends StatefulWidget {
   /// suggestion direction defaults to [SuggestionDirection.down]
   final SuggestionDirection suggestionDirection;
 
+  final String? initialValue;
+
   SearchField({
     Key? key,
     required this.suggestions,
@@ -379,6 +381,7 @@ class SearchField<T> extends StatefulWidget {
     this.textAlign = TextAlign.start,
     this.textInputAction,
     this.validator,
+    this.initialValue,
   })  : assert(
             (selectedValue != null &&
                     suggestions.containsObject(selectedValue)) ||
@@ -981,6 +984,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
             link: _layerLink,
             child: TextFormField(
               key: key,
+              initialValue: widget.initialValue,
               contextMenuBuilder: widget.contextMenuBuilder,
               enabled: widget.enabled,
               textAlign: widget.textAlign,
